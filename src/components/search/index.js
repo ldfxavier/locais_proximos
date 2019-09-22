@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StatusBar, Text, Dimensions } from 'react-native';
+import { StatusBar, Text, Dimensions, Platform, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
@@ -82,6 +82,7 @@ export default class Search extends Component {
 						/>
 					</IconContainer>
 					<Input
+						testID="search-input"
 						autoCapitalize="none"
 						autoCorrect={false}
 						value={this.state.search}
@@ -104,6 +105,7 @@ export default class Search extends Component {
 						placeholder="O que deseja buscar?"
 					/>
 					<IconContainer
+						testID="clean-input"
 						onPress={() => {
 							this.setState({
 								locations: [],

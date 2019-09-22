@@ -13,13 +13,13 @@ export default class Welcome extends Component {
 		LoginManager.logInWithPermissions(['public_profile']).then(
 			function(result) {
 				if (result.isCancelled) {
-					console.tron.log('Login cancelled');
+					console.tron.log('Login cancelado');
 				} else {
 					navigation.navigate('Mapa');
 				}
 			},
 			function(error) {
-				console.tron.log('Login fail with error: ' + error);
+				console.tron.log('Falha ao logar: ' + error);
 			}
 		);
 	};

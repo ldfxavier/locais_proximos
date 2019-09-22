@@ -8,11 +8,8 @@ export const Container = styled.View`
 	background-color: ${colors.primary};
 `;
 
-export const BackgroundCarousel = styled.View``;
-
 export const CardCarousel = styled.View`
 	background-color: #fff;
-	padding-bottom: 5px;
 	border-radius: 3px;
 `;
 
