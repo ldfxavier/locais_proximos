@@ -6,7 +6,6 @@ import {
 	Platform,
 	Image,
 	Animated,
-	BackHandler,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Search from '../../components/search';
@@ -43,16 +42,8 @@ export default class Mapa extends Component {
 	}
 
 	componentDidMount() {
-		this.backHandler = BackHandler.addEventListener(
-			'hardwareBackPress',
-			this.handleBackPress
-		);
 		this.getLocationUser();
 	}
-
-	handleBackPress = () => {
-		return false;
-	};
 
 	/*
 	 ** Método para abrir ou fichar a busca
