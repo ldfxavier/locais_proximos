@@ -76,7 +76,7 @@ export default class Search extends Component {
 				<ContainerSearch style={{ paddingTop: this.state.keyboard }}>
 					<IconContainer
 						onPress={() => {
-							keyboard.dismiss();
+							Keyboard.dismiss();
 							this.props.toogleSearch();
 						}}
 					>
@@ -116,7 +116,7 @@ export default class Search extends Component {
 								locations: [],
 								search: '',
 							});
-							keyboard.dismiss();
+							Keyboard.dismiss();
 							this.props.getLocationUser();
 						}}
 					>
@@ -151,7 +151,7 @@ export default class Search extends Component {
 											},
 										],
 									});
-									keyboard.dismiss();
+									Keyboard.dismiss();
 									this.props.toogleSearch();
 								}}
 							>

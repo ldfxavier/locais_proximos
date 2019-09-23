@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import { Dimensions, Image } from 'react-native';
+import { Dimensions } from 'react-native';
 import CarouselView from 'react-native-snap-carousel';
 
 import { token_google } from '../../config/config';
 
-import { Text, Title, Container, CardCarousel } from './styles';
+import { Text, Title, Container, CardCarousel, ImageLocal } from './styles';
 
 const { width, height } = Dimensions.get('window');
 
@@ -24,9 +24,7 @@ export default class carousel extends Component {
 		return (
 			<CardCarousel>
 				{item.photos != undefined ? (
-					<Image
-						style={{ height: 100 }}
-						resizeMode="cover"
+					<ImageLocal
 						source={{
 							uri:
 								'https://maps.googleapis.com/maps/api/place/photo?photoreference=' +

@@ -13,7 +13,16 @@ export const CardCarousel = styled.View`
 	border-radius: 3px;
 `;
 
-export const Title = styled.Text`
+export const ImageLocal = styled.Image.attrs({
+	resizeMode: 'cover',
+})`
+	height: 110px;
+	border-radius: 3px;
+`;
+
+export const Title = styled.Text.attrs({
+	numberOfLines: 1,
+})`
 	color: ${colors.primary};
 	text-align: center;
 	font-weight: bold;
