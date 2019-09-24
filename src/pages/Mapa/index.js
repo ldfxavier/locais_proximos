@@ -49,15 +49,16 @@ export default class Mapa extends Component {
 	 ** Método para abrir ou fichar a busca
 	 */
 	toogleSearch = () => {
-		if (this.state.toogle == false) {
+		const { toogle, searchY } = this.state;
+		if (toogle == false) {
 			this.setState({ toogle: true });
-			Animated.timing(this.state.searchY, {
+			Animated.timing(searchY, {
 				toValue: -height,
 				duration: 500,
 			}).start();
 		} else {
 			this.setState({ toogle: false });
-			Animated.timing(this.state.searchY, {
+			Animated.timing(searchY, {
 				toValue: 0,
 				duration: 500,
 			}).start();
@@ -120,8 +121,9 @@ export default class Mapa extends Component {
 	 ** Método para renderizar os makers no mapa
 	 */
 	renderMakers = () => {
-		if (this.state.locations != '') {
-			return this.state.locations.map(r => (
+		const { locations } = this.state;
+		if (locations != '') {
+			return locations.map(r => (
 				<Maps.Marker
 					id={r.id}
 					key={r.id}
@@ -159,7 +161,7 @@ export default class Mapa extends Component {
 	};
 
 	render() {
-		const { region } = this.state;
+		const { region, searchY, locations } = this.state;
 		return (
 			<Fragment>
 				<StatusBar
@@ -202,7 +204,7 @@ export default class Mapa extends Component {
 						width: width,
 						height: height,
 						zIndex: 1,
-						bottom: this.state.searchY,
+						bottom: searchY,
 					}}
 				>
 					<Search
@@ -217,7 +219,7 @@ export default class Mapa extends Component {
 					/>
 				</Animated.View>
 				<Carousel
-					locations={this.state.locations}
+					locations={locations}
 					region={region =>
 						this.setState({
 							region,

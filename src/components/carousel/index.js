@@ -40,19 +40,18 @@ export default class carousel extends Component {
 		);
 	}
 	render() {
+		const { locations, region } = this.props;
 		return (
 			<Container>
 				<CarouselView
-					data={this.props.locations}
+					data={locations}
 					renderItem={this.renderItem}
 					sliderWidth={width}
 					itemWidth={slideWidth}
 					onBeforeSnapToItem={item => {
-						this.props.region({
-							longitude: this.props.locations[item].geometry
-								.location.lng,
-							latitude: this.props.locations[item].geometry
-								.location.lat,
+						region({
+							longitude: locations[item].geometry.location.lng,
+							latitude: locations[item].geometry.location.lat,
 							latitudeDelta: 0.00522,
 							longitudeDelta: (width / height) * 0.00522,
 						});

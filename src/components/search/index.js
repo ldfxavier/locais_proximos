@@ -66,6 +66,8 @@ export default class Search extends Component {
 	};
 
 	render() {
+		const { keyboard, search, locations } = this.state;
+		const { toogleSearch, getLocationUser, region } = this.props;
 		return (
 			<Container>
 				<StatusBar
@@ -73,11 +75,11 @@ export default class Search extends Component {
 						Platform.OS === 'ios' ? 'dark-content' : 'light-content'
 					}
 				/>
-				<ContainerSearch style={{ paddingTop: this.state.keyboard }}>
+				<ContainerSearch style={{ paddingTop: keyboard }}>
 					<IconContainer
 						onPress={() => {
 							Keyboard.dismiss();
-							this.props.toogleSearch();
+							toogleSearch();
 						}}
 					>
 						<Icon
@@ -90,7 +92,7 @@ export default class Search extends Component {
 						testID="search-input"
 						autoCapitalize="none"
 						autoCorrect={false}
-						value={this.state.search}
+						value={search}
 						onChangeText={text => {
 							this.setState({
 								search: text,
@@ -117,19 +119,19 @@ export default class Search extends Component {
 								search: '',
 							});
 							Keyboard.dismiss();
-							this.props.getLocationUser();
+							getLocationUser();
 						}}
 					>
 						<Icon name="close" size={20} color={colors.primary} />
 					</IconContainer>
 				</ContainerSearch>
-				{this.state.locations != [] ? (
+				{locations != [] ? (
 					<FlatList
-						data={this.state.locations}
+						data={locations}
 						renderItem={({ item }) => (
 							<CardFlatlist
 								onPress={() => {
-									this.props.region({
+									region({
 										region: {
 											longitude:
 												item.geometry.location.lng,
@@ -152,7 +154,7 @@ export default class Search extends Component {
 										],
 									});
 									Keyboard.dismiss();
-									this.props.toogleSearch();
+									toogleSearch();
 								}}
 							>
 								<Title>{item.name}</Title>
