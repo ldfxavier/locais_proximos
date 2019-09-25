@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import { LoginManager } from 'react-native-fbsdk';
 
+import { colors } from '../../styles/colors';
 import { Container, Title, LoginButton, Text } from './styles';
 
 export default class Welcome extends Component {
@@ -30,7 +31,7 @@ export default class Welcome extends Component {
 				<Title>Seja bem vindo!</Title>
 				<Text>Faça seu login e vamos começar!</Text>
 				<LoginButton testID="login" onPress={() => this.userLogin()}>
-					<Icon name="sc-facebook" size={35} color="#04262b" />
+					<Icon name="sc-facebook" size={35} color={colors.primary} />
 				</LoginButton>
 			</Container>
 		);
