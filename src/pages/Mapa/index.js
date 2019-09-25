@@ -25,6 +25,7 @@ import {
 	IconMarker,
 	Button,
 	ContainerButton,
+	SearchContainer,
 } from './styles';
 import Geolocation from '@react-native-community/geolocation';
 
@@ -197,13 +198,8 @@ export default class Mapa extends Component {
 						<Icon name="search" size={20} color={colors.primary} />
 					</Button>
 				</ContainerButton>
-				<Animated.View
+				<SearchContainer
 					style={{
-						flex: 1,
-						position: 'absolute',
-						width: width,
-						height: height,
-						zIndex: 1,
 						bottom: searchY,
 					}}
 				>
@@ -217,7 +213,7 @@ export default class Mapa extends Component {
 						toogleSearch={this.toogleSearch}
 						getLocationUser={this.getLocationUser}
 					/>
-				</Animated.View>
+				</SearchContainer>
 				<Carousel
 					locations={locations}
 					region={region =>

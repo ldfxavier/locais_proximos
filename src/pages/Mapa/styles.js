@@ -1,6 +1,9 @@
+import { Animated, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import MapView from 'react-native-maps';
 import { colors } from '../../styles/colors';
+
+const { width, height } = Dimensions.get('window');
 
 export const Maps = styled(MapView)`
 	flex: 1;
@@ -20,7 +23,9 @@ export const ContainerButton = styled.View`
 	flex-direction: column;
 `;
 
-export const Button = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity.attrs({
+	elevation: 3,
+})`
 	width: 40px;
 	height: 40px;
 	margin-bottom: 10px;
@@ -29,6 +34,14 @@ export const Button = styled.TouchableOpacity`
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0px 1px 5px #333;
+`;
+
+export const SearchContainer = styled(Animated.View)`
+	flex: 1;
+	position: absolute;
+	width: ${width};
+	height: ${height};
+	z-index: 1;
 `;
 
 export const Search = styled.View`
