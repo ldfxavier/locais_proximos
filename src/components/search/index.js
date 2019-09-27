@@ -34,35 +34,37 @@ export default class Search extends Component {
 	 ** Método para buscar locais no mapa
 	 */
 	searchLocation = async text => {
-		const response = await api.get(
-			'/findplacefromtext/json?input=' +
-				text +
-				'&inputtype=textquery&fields=photos,formatted_address,icon,name,rating,opening_hours,geometry&key=' +
-				token_google
-		);
-
-		let { data } = response;
-
-		if (data.status == 'OK') {
-			this.setState({
-				region: {
-					longitude: data.candidates[0].geometry.location.lng,
-					latitude: data.candidates[0].geometry.location.lat,
-					latitudeDelta: 0.029213524352655895,
-					longitudeDelta: (width / height) * 0.029213524352655895,
-				},
-				locations: [
-					{
-						id: 'a1',
-						icon: data.candidates[0].icon,
-						geometry: data.candidates[0].geometry,
-						name: data.candidates[0].name,
-						vicinity: data.candidates[0].formatted_address,
-						photos: data.candidates[0].photos,
-					},
-				],
+		await api
+			.get(
+				'/findplacefromtext/json?input=' +
+					text +
+					'&inputtype=textquery&fields=photos,formatted_address,icon,name,rating,opening_hours,geometry&key=' +
+					token_google
+			)
+			.then(response => {
+				let { data } = response;
+				if (data.status == 'OK') {
+					this.setState({
+						region: {
+							longitude: data.candidates[0].geometry.location.lng,
+							latitude: data.candidates[0].geometry.location.lat,
+							latitudeDelta: 0.029213524352655895,
+							longitudeDelta:
+								(width / height) * 0.029213524352655895,
+						},
+						locations: [
+							{
+								id: 'a1',
+								icon: data.candidates[0].icon,
+								geometry: data.candidates[0].geometry,
+								name: data.candidates[0].name,
+								vicinity: data.candidates[0].formatted_address,
+								photos: data.candidates[0].photos,
+							},
+						],
+					});
+				}
 			});
-		}
 	};
 
 	render() {

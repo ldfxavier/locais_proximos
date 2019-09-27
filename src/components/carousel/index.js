@@ -9,16 +9,6 @@ import { Text, Title, Container, CardCarousel, ImageLocal } from './styles';
 
 const { width, height } = Dimensions.get('window');
 
-function wp(percentage) {
-	const value = (percentage * width) / 100;
-	return Math.round(value);
-}
-const slideWidth = wp(75);
-const itemHorizontalMargin = wp(2);
-
-export const sliderWidth = width;
-export const itemWidth = slideWidth + itemHorizontalMargin * 2;
-
 export default class carousel extends Component {
 	renderItem({ item }) {
 		return (
@@ -47,7 +37,7 @@ export default class carousel extends Component {
 					data={locations}
 					renderItem={this.renderItem}
 					sliderWidth={width}
-					itemWidth={slideWidth}
+					itemWidth={Math.round((75 * width) / 100)}
 					onBeforeSnapToItem={item => {
 						region({
 							longitude: locations[item].geometry.location.lng,

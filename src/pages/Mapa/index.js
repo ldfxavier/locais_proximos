@@ -97,26 +97,27 @@ export default class Mapa extends Component {
 	/*
 	 ** Método para consumir dados da API do google
 	 */
-	getLocationMarker = async (latitude, longitude) => {
-		const response = await api.get(
-			'/nearbysearch/json?key=' +
-				token_google +
-				'&radius=5000&type=restaurant&location=' +
-				latitude +
-				',' +
-				longitude
-		);
-
-		if (response.status == 200) {
-			this.setState({
-				locations: response.data.results,
-			});
-		} else {
-			this.setState({
-				locations: '',
-			});
-		}
-	};
+	async getLocationMarker(latitude, longitude) {
+		await api
+			.get(
+				'/nearbysearch/json?key=' +
+					token_google +
+					'&radius=5000&type=restaurant&location=' +
+					latitude +
+					',' +
+					longitude
+			)
+			.then(response =>
+				this.setState({
+					locations: response.data.results,
+				})
+			)
+			.catch(error =>
+				this.setState({
+					locations: '',
+				})
+			);
+	}
 
 	/*
 	 ** Método para renderizar os makers no mapa
